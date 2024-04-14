@@ -24,7 +24,8 @@ def upload_image(update: Update, context: CallbackContext) -> None:
         if response.status_code == 200:
             imgbb_response = response.json()
             image_url = imgbb_response['data']['url']
-            update.message.reply_text(f"Image uploaded! Here's the link: {image_url}")
+            update.message.reply_text(f"Image uploaded! Here's the link: <code>{image_url}</code>",
+                                      parse_mode='Markdown')
         else:
             update.message.reply_text("Sorry, something went wrong while uploading the image.")
     else:
